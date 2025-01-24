@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceqqq48nrv48a"]
+
+[ext_resource type="Script" path="res://nodes/board/CardManager.cs" id="1_rqcmf"]
+
+[sub_resource type="Curve" id="Curve_p7pxh"]
+_data = [Vector2(0, 1), 0.0, -0.379869, 0, 0, Vector2(0.504673, 0), -4.44296, 0.0, 0, 0]
+point_count = 2
+
+[node name="Board" type="Node2D"]
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("1_rqcmf")
+JumlahKartu = 10
+CurvaDistribusiKartu = SubResource("Curve_p7pxh")
+
+[node name="Marker2D" type="Marker2D" parent="CardManager"]
+position = Vector2(576, 600)
+
+[node name="DrawButton" type="Button" parent="."]
+offset_left = 59.0
+offset_top = 61.0
+offset_right = 109.0
+offset_bottom = 92.0
+text = "Draw"
+
+[connection signal="pressed" from="DrawButton" to="CardManager" method="SpawnCard"]
